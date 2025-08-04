@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contagem para o Aniversário da Princesa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #e91e63;
+    }
+    .contador {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: #555;
+    }
+    .frase-dia {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+    .imagem-dia {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contagem para o Aniversário da Princesa 👑</h1>
+
+  <div class="contador" id="contador"></div>
+
+  <p class="frase-dia" id="frase-dia">Hoje é um dia a menos para celebrar a vida de alguém tão especial.</p>
+
+  <img id="imagem-dia" class="imagem-dia" src="imagem-do-dia.jpg" alt="Foto do dia">
+
+  <script>
+    // Contador de dias até 28/08/2025
+    const dataAlvo = new Date("2025-08-28");
+    const hoje = new Date();
+    const diasRestantes = Math.ceil((dataAlvo - hoje) / (1000 * 60 * 60 * 24));
+
+    const contadorEl = document.getElementById("contador");
+    contadorEl.innerText = `Faltam ${diasRestantes} dia${diasRestantes > 1 ? 's' : ''} para o aniversário da princesa!`;
+  </script>
+
+</body>
+</html>
