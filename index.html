@@ -14,10 +14,33 @@
     h1 {
       color: #e91e63;
     }
-    .contador {
-      font-size: 1.5rem;
-      margin: 1rem 0;
-      color: #555;
+    .contador-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    .folhinha {
+      background: #fff;
+      border: 2px solid #e91e63;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 120px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .folhinha-header {
+      background: #e91e63;
+      color: white;
+      padding: 0.5rem;
+      font-weight: bold;
+      border-radius: 8px 8px 0 0;
+      font-size: 1rem;
+    }
+    .folhinha-valor {
+      font-size: 1.8rem;
+      color: #333;
+      margin-top: 1rem;
     }
     .frase-dia {
       font-size: 1.2rem;
@@ -36,9 +59,32 @@
 
   <h1>Contagem para o Aniversário da Princesa 👑</h1>
 
-  <div class="contador" id="contador"></div>
+  <div class="contador-wrapper">
+    <div class="folhinha">
+      <div class="folhinha-header">DIAS</div>
+      <div class="folhinha-valor" id="dias">0</div>
+    </div>
+    <div class="folhinha">
+      <div class="folhinha-header">HORAS</div>
+      <div class="folhinha-valor" id="horas">0</div>
+    </div>
+    <div class="folhinha">
+      <div class="folhinha-header">MINUTOS</div>
+      <div class="folhinha-valor" id="minutos">0</div>
+    </div>
+    <div class="folhinha">
+      <div class="folhinha-header">SEGUNDOS</div>
+      <div class="folhinha-valor" id="segundos">0</div>
+    </div>
+  </div>
 
-  <p class="frase-dia" id="frase-dia">Não fique ansiosa, princesa… tá chegando! O bolo já tá se arrumando e até os brigadeiros tão passando perfume!.</p>
+  <p class="frase-dia" id="frase-dia">Nem em 1 mil milhões de anos eu planejei esbarrar em alguém que bagunçasse meu GPS emocional. Mas aconteceu. E desde então, cada conversa, cada biquinho e cada riso fora de hora só me fazem querer desvendar mais do mistério que é você.
+
+Este é só o primeiro de muitos aniversários que vamos viver lado a lado — com bolo, risadas, e talvez um presente comprado meses antes  (mas com intenção e ansiedade nota 10).
+
+Este site? É um humilde contador para um dia que virou feriado pessoal: o dia em que meu 1º Tesouro resolveu nascer e mudar tudo sem pedir permissão.
+
+E sinceramente… com você, até fila de banco vira aventura — e olha que eu detesto fila.</p>
 
   <img id="imagem-dia" class="imagem-dia" src="images.jpg" alt="Foto do dia">
 
@@ -49,7 +95,11 @@
       const diferenca = dataAlvo - agora;
 
       if (diferenca <= 0) {
-        document.getElementById("contador").innerText = "Hoje é o grande dia! 🎉";
+        document.getElementById("dias").innerText = "0";
+        document.getElementById("horas").innerText = "0";
+        document.getElementById("minutos").innerText = "0";
+        document.getElementById("segundos").innerText = "0";
+        document.getElementById("frase-dia").innerText = "Hoje é o grande dia! 🎉";
         return;
       }
 
@@ -58,8 +108,10 @@
       const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
-      document.getElementById("contador").innerText = 
-        `Faltam ${dias} dia${dias !== 1 ? 's' : ''}, ${horas} hora${horas !== 1 ? 's' : ''}, ${minutos} minuto${minutos !== 1 ? 's' : ''} e ${segundos} segundo${segundos !== 1 ? 's' : ''} para o aniversário da princesa!`;
+      document.getElementById("dias").innerText = dias;
+      document.getElementById("horas").innerText = horas;
+      document.getElementById("minutos").innerText = minutos;
+      document.getElementById("segundos").innerText = segundos;
     }
 
     atualizarContador();
