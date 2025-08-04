@@ -43,13 +43,27 @@
   <img id="imagem-dia" class="imagem-dia" src="imagem-do-dia.jpg" alt="Foto do dia">
 
   <script>
-    // Contador de dias até 28/08/2025
-    const dataAlvo = new Date("2025-08-28");
-    const hoje = new Date();
-    const diasRestantes = Math.ceil((dataAlvo - hoje) / (1000 * 60 * 60 * 24));
+    function atualizarContador() {
+      const agora = new Date().getTime();
+      const dataAlvo = new Date("2025-08-27T00:00:00").getTime();
+      const diferenca = dataAlvo - agora;
 
-    const contadorEl = document.getElementById("contador");
-    contadorEl.innerText = `Faltam ${diasRestantes} dia${diasRestantes > 1 ? 's' : ''} para o aniversário da princesa!`;
+      if (diferenca <= 0) {
+        document.getElementById("contador").innerText = "Hoje é o grande dia! 🎉";
+        return;
+      }
+
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerText = 
+        `Faltam ${dias} dia${dias !== 1 ? 's' : ''}, ${horas} hora${horas !== 1 ? 's' : ''}, ${minutos} minuto${minutos !== 1 ? 's' : ''} e ${segundos} segundo${segundos !== 1 ? 's' : ''} para o aniversário da princesa!`;
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
   </script>
 
 </body>
