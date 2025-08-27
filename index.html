@@ -3,119 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contagem para o Aniversário da Princesa</title>
+  <title>Convite Especial 💜</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fff8f0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      color: #e91e63;
-    }
-    .contador-wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-    }
-    .folhinha {
-      background: #fff;
-      border: 2px solid #e91e63;
-      border-radius: 12px;
-      padding: 1rem;
-      width: 120px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    }
-    .folhinha-header {
-      background: #e91e63;
+      background: #1a001f;
       color: white;
-      padding: 0.5rem;
-      font-weight: bold;
-      border-radius: 8px 8px 0 0;
-      font-size: 1rem;
     }
-    .folhinha-valor {
-      font-size: 1.8rem;
-      color: #333;
-      margin-top: 1rem;
+
+    /* Fundo animado */
+    .heart {
+      position: fixed;
+      top: -10vh;
+      color: #b266ff;
+      font-size: 20px;
+      animation: fall 8s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
     }
-    .frase-dia {
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 3rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #d9b3ff;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
       font-size: 1.2rem;
-      margin: 1rem 0;
-      font-style: italic;
+      line-height: 1.8rem;
+      margin-bottom: 2rem;
     }
-    .imagem-dia {
-      max-width: 90%;
-      height: auto;
+
+    .buttons {
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-sim {
+      background: #a64dff;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(182, 102, 255, 0.7);
+    }
+
+    .btn-sim:hover {
+      transform: scale(1.1);
+      background: #9226ff;
+    }
+
+    .linha-nao {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .btn-nao {
+      font-size: 0.8rem;
+      background: transparent;
+      color: #ccc;
+      border: none;
+      position: relative;
+    }
+
+    .btn-nao:hover {
+      color: #999;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <h1>Contagem para o Aniversário da Princesa 👑</h1>
+  <div class="container">
+    <h1>💜 Convite Especial 💜</h1>
+    <p>
+      Como a <b>tanzanite</b>, rara e deslumbrante, você brilha com um esplendor único.  
+      O seu sorriso é o mais lindo do planeta, e cada detalhe seu é uma obra esculpida pelo divino.  
+      Deus me abençoou com a sua presença, e por isso desejo que este aniversário seja inesquecível.  
+    </p>
+    <p>
+      Te convido para celebrarmos juntos o seu dia no  
+      <b>Malibu Plaza Hotel</b>, onde cada instante será apenas sobre você,  
+      a razão do meu encantamento. ✨
+    </p>
 
-  <div class="contador-wrapper">
-    <div class="folhinha">
-      <div class="folhinha-header">DIAS</div>
-      <div class="folhinha-valor" id="dias">0</div>
-    </div>
-    <div class="folhinha">
-      <div class="folhinha-header">HORAS</div>
-      <div class="folhinha-valor" id="horas">0</div>
-    </div>
-    <div class="folhinha">
-      <div class="folhinha-header">MINUTOS</div>
-      <div class="folhinha-valor" id="minutos">0</div>
-    </div>
-    <div class="folhinha">
-      <div class="folhinha-header">SEGUNDOS</div>
-      <div class="folhinha-valor" id="segundos">0</div>
+    <div class="buttons">
+      <button class="btn btn-sim" onclick="confirmarConvite()">SIM</button>
+      
+      <div class="linha-nao">
+        <button id="btnNao" class="btn-nao" onclick="clicouNao()">não</button>
+        <span>sei que gosta de ser do contra, então experimenta apertar o não,</span>
+      </div>
     </div>
   </div>
 
-  <p class="frase-dia" id="frase-dia">Nem em mil milhões de anos eu planejei esbarrar em alguém que revirasse meu GPS emocional. Mas aconteceu. E desde então, cada conversa, cada biquinho e cada riso fora de hora só me fazem querer desvendar mais do mistério que é você.
-
-Este é só o primeiro de muitos aniversários que vamos viver lado a lado — com bolo, risadas, e talvez um presente comprado a um mês (mas com intenção e ansiedade nota 10).
-
-Este site? É um humilde contador para um dia que virou feriado pessoal: o dia em que meu 1º Tesouro resolveu nascer e mudar tudo sem pedir permissão.
-
-Para a dona do sorriso mais lindo do mundo, deixo registrado: com você, até fila vira um momento esperando  — e olha que eu detesto fila..</p>
-
-  <img id="imagem-dia" class="imagem-dia" src="ft.jpeg" alt="Foto do dia">
-
   <script>
-    function atualizarContador() {
-      const agora = new Date().getTime();
-      const dataAlvo = new Date("2025-08-27T00:00:00").getTime();
-      const diferenca = dataAlvo - agora;
-
-      if (diferenca <= 0) {
-        document.getElementById("dias").innerText = "0";
-        document.getElementById("horas").innerText = "0";
-        document.getElementById("minutos").innerText = "0";
-        document.getElementById("segundos").innerText = "0";
-        document.getElementById("frase-dia").innerText = "Hoje é o grande dia! 🎉";
-        return;
-      }
-
-      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-      document.getElementById("dias").innerText = dias;
-      document.getElementById("horas").innerText = horas;
-      document.getElementById("minutos").innerText = minutos;
-      document.getElementById("segundos").innerText = segundos;
+    // Redireciona para WhatsApp com mensagem
+    function confirmarConvite() {
+      const numero = "+5571992220753"; // coloque o número aqui no formato com DDI +55
+      const mensagem = encodeURIComponent("Convite confirmado, Não consegui recusar o convite!");
+      window.location.href = `https://wa.me/${numero}?text=${mensagem}`;
     }
 
-    atualizarContador();
-    setInterval(atualizarContador, 1000);
+    // Controle do botão "não"
+    let clicouPrimeiraVez = false;
+    const btnNao = document.getElementById("btnNao");
+
+    function clicouNao() {
+      if (!clicouPrimeiraVez) {
+        clicouPrimeiraVez = true;
+        localStorage.setItem("apertouNao", "true");
+        location.reload();
+      }
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("apertouNao") === "true") {
+        alert("seu celular será hackeado caso aperte não novamente!");
+        localStorage.removeItem("apertouNao");
+
+        // Botão começa a fugir do cursor
+        btnNao.addEventListener("mouseover", () => {
+          const x = Math.random() * (window.innerWidth - 100);
+          const y = Math.random() * (window.innerHeight - 50);
+          btnNao.style.position = "absolute";
+          btnNao.style.left = x + "px";
+          btnNao.style.top = y + "px";
+        });
+      }
+    };
+
+    // Geração de corações no fundo
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "💜";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(criarCoracao, 300);
   </script>
 
 </body>
